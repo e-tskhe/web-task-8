@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="btn">Показать форму</button>
+
+        <form id="form" class="ajaxForm"
+            action="https://formcarry.com/s/qWlUnLOkfJ2" method="POST">
+        
+            <p><label>ФИО:<br />
+                <input name="name" type=text 
+                    pattern="^[А-Яа-яЁё\s]+$" title="ФИО должно содержать только буквы"
+                    required placeholder="Иванов Иван Иванович">
+            </label><br /></p>
+
+            <p><label>Телефон:<br />
+                <input name="tel" required placeholder="89180001122" 
+                type="tel" pattern="^[0-9]+$" 
+                title="Номер телефона должен содержать только цифры"/>
+            </label><br /></p>
+
+            <p><label>Email:<br />
+                <input name="email" required placeholder="example@gmail.com"
+                type="email"/>
+            </label><br /></p>
+
+            <p><label>Организация:<br />
+                <input name="org" type=text title="ФИО должно содержать только буквы"
+                    required placeholder="Google">
+            </label><br /></p>
+
+            <p><label>Сообщение:<br />
+                <textarea name="mesg" 
+                style="width: 200px; height: 50px"
+                required placeholder=""></textarea>
+            </label></p>
+
+            <p><label>С контрактом ознакомлен(-а): <input type="checkbox" 
+                checked="checked" name="contract"/>
+            </label></p>
+
+            <input type="submit" value="Отправить" />
+        </form>
+    
+</body>
+</html>
