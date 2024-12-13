@@ -19,12 +19,20 @@ $(function(){
   });
 });
 
-window.addEventListener('DOMContentLoaded', function(event) {
+window.addEventListener('DOMContentLoaded', (event) => {
   const form = document.getElementById("form");
   const formFields = form.elements;
 
   for (let i = 0; i < formFields.length; i++) {
-    formFields[i].addEventListener("change", saveFormData);
+    if (formFields[i].type !== "submit")
+      formFields[i].addEventListener("change", saveFormData);
+  }
+
+  if (localStorage.length !== 0) {
+    for (let i = 0; i < formFields.length; i++) {
+      if (formFields[i].type !== "submit")
+        formFields[i].value = localStorage.getItem(formFields[i].name);
+    }
   }
   const btn = document.getElementById("btn");
 
@@ -42,11 +50,16 @@ window.addEventListener('DOMContentLoaded', function(event) {
   }
 });
 
-window.onpopstate = function(event) {
+window.addEventListener("popstate", function(event) {
   if (event.state && event.state.formOpen) {
-    closeForm();
+    form.style.display = "block";
+    history.pushState({formOpen: true}, "", "form=open");
   }
-}
+  else {
+    form.style.display = "none";
+    history.back();
+  }
+});
 
 function openForm() {
   let form = document.getElementById("form");
@@ -64,10 +77,6 @@ function saveFormData() {
   localStorage.setItem(this.name, this.value);
 }
 
-function loadFormData() {
-  for (let i = 0; i < formFields.length; i++) {
-    formFields[i].value = localStorage.getItem(formFields[i].name);
-  }
-}
-
-window.onload(loadFormData);
+window.addEventListener("DOMContentLoaded", () => {
+  const nameInput = document.getElementsByName("name")
+});
