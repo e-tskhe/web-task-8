@@ -57,7 +57,8 @@ window.addEventListener("popstate", function(event) {
   }
   else {
     form.style.display = "none";
-    history.back();
+    this.history.pushState({formOpen: false}, "", "index.html")
+    // history.back();
   }
 });
 
@@ -70,7 +71,8 @@ function openForm() {
 function closeForm() {
   let form = document.getElementById("form");
   form.style.display = "none";
-  history.back();
+  this.history.pushState({formOpen: false}, "", "index.html")
+  // history.back();
 }
 
 function saveFormData() {
